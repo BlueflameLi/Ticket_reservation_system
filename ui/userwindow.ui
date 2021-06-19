@@ -3010,12 +3010,7 @@ border-radius:0pxborder:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>航班号</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>起飞日期</string>
+       <string>航班信息</string>
       </property>
      </column>
      <column>
@@ -5640,9 +5635,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QTableWidget" name="ticket_tableWidget">
      <property name="geometry">
       <rect>
-       <x>220</x>
+       <x>210</x>
        <y>170</y>
-       <width>851</width>
+       <width>911</width>
        <height>331</height>
       </rect>
      </property>
@@ -6070,6 +6065,11 @@ border-radius:0px</string>
      <column>
       <property name="text">
        <string>到达准点率</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>舱位类型</string>
       </property>
      </column>
      <column>
@@ -8187,8 +8187,8 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QComboBox" name="cabin_comboBox">
      <property name="geometry">
       <rect>
-       <x>1160</x>
-       <y>190</y>
+       <x>1230</x>
+       <y>180</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -8200,7 +8200,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
      </item>
      <item>
       <property name="text">
-       <string>商务舱</string>
+       <string>公务舱</string>
       </property>
      </item>
      <item>
@@ -8212,8 +8212,8 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="cabin_label">
      <property name="geometry">
       <rect>
-       <x>1100</x>
-       <y>190</y>
+       <x>1170</x>
+       <y>180</y>
        <width>51</width>
        <height>31</height>
       </rect>
@@ -12296,7 +12296,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
  <connections>
   <connection>
    <sender>city_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>flight_no_lineEdit</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12312,7 +12312,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>city_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>depcity_lineEdit</receiver>
    <slot>show()</slot>
    <hints>
@@ -12328,7 +12328,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>city_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>arrcity_lineEdit</receiver>
    <slot>show()</slot>
    <hints>
@@ -12344,7 +12344,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>arrcity_lineEdit</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12360,7 +12360,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>depcity_lineEdit</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12376,7 +12376,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>flight_no_lineEdit</receiver>
    <slot>show()</slot>
    <hints>
@@ -12392,7 +12392,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>flight_no_lineEdit_2</receiver>
    <slot>show()</slot>
    <hints>
@@ -12408,7 +12408,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>arrcity_lineEdit_2</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12424,7 +12424,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>flight_no_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>depcity_lineEdit_2</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12440,7 +12440,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>city_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>flight_no_lineEdit_2</receiver>
    <slot>hide()</slot>
    <hints>
@@ -12456,7 +12456,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>city_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>arrcity_lineEdit_2</receiver>
    <slot>show()</slot>
    <hints>
@@ -12472,7 +12472,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </connection>
   <connection>
    <sender>city_search_radioButton_2</sender>
-   <signal>clicked(bool)</signal>
+   <signal>clicked()</signal>
    <receiver>depcity_lineEdit_2</receiver>
    <slot>show()</slot>
    <hints>
@@ -12482,6 +12482,102 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     </hint>
     <hint type="destinationlabel">
      <x>360</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>arrcity_lineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>depcity_lineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>arrcity_lineEdit_2</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>depcity_lineEdit_2</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>325</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>city_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>440</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>450</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>city_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit_2</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>440</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>450</x>
      <y>200</y>
     </hint>
    </hints>

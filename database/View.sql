@@ -83,7 +83,7 @@ SELECT [F].[Flight_NO] AS '航班号1',
        [Arrival_teminal],
        [Cabin_type],
        [Price],
-       [出发准点率],
+       [降落准点率],
        [I].[Itinerary_id] AS '行程号',
        [IC].[Plane_NO] AS '飞机号',
        [IC].[Cabin_code] AS '舱位代码'
@@ -121,8 +121,10 @@ SELECT [Order_id],
        [a2].[City] AS '到达城市',
        [a2].[Airport_name] AS '达到机场名',
         [Arrival_teminal],
-       [Order].[Itinerary_id] AS '航班号',
-       [Cabin_type]
+       [Itinerary].[Flight_NO] AS '航班号',
+       [Cabin_type],
+       [Uname],
+       [Order_time]
 FROM [Order]
 JOIN [Itinerary]
 ON [Order].[Itinerary_id]=[Itinerary].[Itinerary_id]

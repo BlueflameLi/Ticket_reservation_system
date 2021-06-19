@@ -58,7 +58,9 @@ AND [Plan_departuredate] = '2021-06-19';
 
 UPDATE [Itinerary]
 SET [Departuretime] = '2021-06-19 7:53:00',
-    [Arrivaltime] = '2021-06-19 9:41:00'
+    [Arrivaltime] = '2021-06-19 9:41:00',
+    [Flight_status] ='航班到达',
+    [Mileage] = 1088
 WHERE @Itinerary_id = [Itinerary_id]; 
 
 INSERT INTO [Itinerary_Cabin]
@@ -83,7 +85,9 @@ AND [Plan_departuredate] = '2021-06-18';
 
 UPDATE [Itinerary]
 SET [Departuretime] = '2021-06-18 7:23:00',
-    [Arrivaltime] = '2021-06-18 9:30:00'
+    [Arrivaltime] = '2021-06-18 9:30:00',
+    [Flight_status] ='航班到达',
+    [Mileage] = 1088
 WHERE @Itinerary_id = [Itinerary_id];
 
 INSERT INTO [Itinerary_Cabin]
@@ -159,12 +163,6 @@ FROM [Itinerary]
 WHERE [Flight_NO] = 'MU5099' 
 AND [Plan_departuredate] = '2021-06-25'; 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-25 6:53:00',
-    [Arrivaltime] = '2021-06-25 9:51:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
 
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
@@ -185,14 +183,6 @@ WHERE [Flight_NO] = 'MU5099'
 AND [Plan_departuredate] = '2021-06-24'; 
 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-24 6:57:00',
-    [Arrivaltime] = '2021-06-24 9:21:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
-
-
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
         (@Itinerary_id,'B-1234','B',6800,20),
@@ -211,12 +201,6 @@ FROM [Itinerary]
 WHERE [Flight_NO] = 'MU5099' 
 AND [Plan_departuredate] = '2021-06-23'; 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-23 7:22:00',
-    [Arrivaltime] = '2021-06-23 9:48:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
 
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
@@ -288,13 +272,6 @@ WHERE [Flight_NO] = 'MU5099'
 AND [Plan_departuredate] = '2021-06-30'; 
 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-30 7:23:00',
-    [Arrivaltime] = '2021-06-30 9:01:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
-
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
         (@Itinerary_id,'B-1234','B',6800,20),
@@ -313,12 +290,6 @@ FROM [Itinerary]
 WHERE [Flight_NO] = 'MU5099' 
 AND [Plan_departuredate] = '2021-06-29'; 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-29 7:33:00',
-    [Arrivaltime] = '2021-06-29 9:55:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
 
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
@@ -338,12 +309,6 @@ FROM [Itinerary]
 WHERE [Flight_NO] = 'MU5099' 
 AND [Plan_departuredate] = '2021-06-28'; 
 
-UPDATE [Itinerary]
-SET [Departuretime] = '2021-06-28 7:08:00',
-    [Arrivaltime] = '2021-06-28 9:01:00',
-    [Flight_status] ='航班到达',
-    [Mileage] = 1088
-WHERE @Itinerary_id = [Itinerary_id];
 
 INSERT INTO [Itinerary_Cabin]
 VALUES  (@Itinerary_id,'B-1234','A',7480,10),
@@ -364,7 +329,7 @@ DECLARE @Itinerary_id char(12),
 SELECT @Itinerary_id = [行程号]
 FROM [Ticket]
 WHERE [航班号1] = 'MU5099' 
-AND [Plan_departuredate] = '2021-06-19'
+AND [Plan_departuredate] = '2021-06-22'
 AND [舱位代码]='A'
 ; 
 

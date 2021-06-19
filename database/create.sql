@@ -9,7 +9,7 @@ CREATE TABLE [User] (
 	[Phone] char(11),				-- 手机号
 	[Sex] char(2) DEFAULT '男',		-- 性别
 	[Name] varchar(30),				-- 姓名
-	[E-mail] varchar(320),			-- 邮箱
+	[Email] varchar(320),			-- 邮箱
 	PRIMARY KEY ([Uname]),
 	CHECK ([Sex] IN ('男', '女'))
 )
