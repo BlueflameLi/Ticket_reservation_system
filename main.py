@@ -2,13 +2,15 @@
 
 import sys
 from PyQt5 import QtCore
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QStackedWidget, QTableWidgetItem, QPushButton, \
+from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QWidget, QStackedWidget, QTableWidgetItem, QPushButton, \
     QMessageBox, QHeaderView
 from PyQt5.QtGui import QPixmap, QPainter
 from sip import settracemask
 from interface.Ui_adminwindow import Ui_AdminWindow
 from interface.Ui_mainwindow import Ui_MainWindow
 from interface.Ui_userwindow import Ui_UserWindow
+from interface.Ui_Flight_detail import Ui_Flight_detail
+from interface.Ui_booking_show import Ui_booing_show
 import pyodbc
 from datetime import date
 import interface.material_rc
@@ -42,6 +44,11 @@ class MainWindows(QMainWindow, Ui_MainWindow):
         self.tel_num_label.hide()
         self.tel_num_lineEdit.hide()
         self.setWindowTitle('航空机票预订系统')
+
+        if connectdatabase():
+            QtCore.qDebug('Connect database Success!')
+        else:
+            QMessageBox.about(self, "提示", "无法连接到数据库")
 
         self.login_radioButton.clicked.connect(self.login_radioButton_clicked)
         self.signup_radioButton.clicked.connect(
@@ -198,6 +205,8 @@ class UserWindow(QWidget, Ui_UserWindow):
         self.date_dateEdit.setDate(currentdate)
         self.date_dateEdit_2.setDate(currentdate)
 
+        self.ticket_tableWidget.setColumnHidden(9, True)
+
         # 使行列头自适应宽度
         self.flight_tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
@@ -231,6 +240,9 @@ class UserWindow(QWidget, Ui_UserWindow):
 
         self.order_comboBox.currentIndexChanged.connect(
             self.order_comboBox_currentIndexChanged)
+
+        self.ticket_tableWidget.doubleClicked.connect(
+            self.ticket_tableWidget_doubleclicked)
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -312,10 +324,15 @@ class UserWindow(QWidget, Ui_UserWindow):
                         newItem = QTableWidgetItem(str(row.Price))
                         newItem.setTextAlignment(QtCore.Qt.AlignCenter)
                         self.ticket_tableWidget.setItem(index, 7, newItem)
+
+                        newItem = QTableWidgetItem(row.行程号)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 9, newItem)
+
                         # 加入购票按钮
                         book_f = QPushButton()
                         book_f.setText('预订')
-                        # book_f.clicked.connect(self.search_ticket)
+                        book_f.clicked.connect(self.book_f_clicked)
                         self.ticket_tableWidget.setCellWidget(index, 8, book_f)
                     self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(0,
                                                                                     QHeaderView.ResizeToContents)
@@ -382,10 +399,15 @@ class UserWindow(QWidget, Ui_UserWindow):
                         newItem = QTableWidgetItem(str(row.Price))
                         newItem.setTextAlignment(QtCore.Qt.AlignCenter)
                         self.ticket_tableWidget.setItem(index, 7, newItem)
+
+                        newItem = QTableWidgetItem(row.行程号)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 9, newItem)
+
                         # 加入购票按钮
                         book_f = QPushButton()
                         book_f.setText('预订')
-                        # book_f.clicked.connect(self.search_ticket)
+                        book_f.clicked.connect(self.book_f_clicked)
                         self.ticket_tableWidget.setCellWidget(index, 8, book_f)
                     self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(0,
                                                                                     QHeaderView.ResizeToContents)
@@ -605,6 +627,23 @@ class UserWindow(QWidget, Ui_UserWindow):
 
         self.passenger_tableWidget.horizontalHeader().setSectionResizeMode(0,
                                                                            QHeaderView.ResizeToContents)
+
+    def ticket_tableWidget_doubleclicked(self):
+        col = self.ticket_tableWidget.selectedItems()[0].column()
+        row = self.ticket_tableWidget.selectedItems()[0].row()
+        if col == 0:
+            self.fd = Flight_detail(self.ticket_tableWidget.item(
+                row, 9).text(), self.ticket_tableWidget.selectedItems()[0].text())
+            self.fd.setWindowTitle('航班详情')
+            self.fd.exec_()
+
+    def book_f_clicked(self):
+        sender = self.sender()
+        index = self.ticket_tableWidget.indexAt(sender.pos())
+
+        self.bs = Book_show(self.ticket_tableWidget.item(
+            index.row(), 9).text(), self.ticket_tableWidget.item(index.row(), 7).text())
+        self.bs.exec_()
 
 
 class AdminWindow(QWidget, Ui_AdminWindow):
@@ -1010,12 +1049,113 @@ class AdminWindow(QWidget, Ui_AdminWindow):
                                                                                QHeaderView.ResizeToContents)
 
 
+class Flight_detail(QDialog, Ui_Flight_detail):
+    def __init__(self, itinerary_id, flight_info):
+        super().__init__()
+        self.setupUi(self)
+
+        self.flight_info_label.setText(flight_info)
+
+        cursor.execute(
+            "select [Flight_NO],[Plane_NO] from [Itinerary] WHERE [Itinerary_id] = '{0}'".format(itinerary_id))
+        rows = cursor.fetchall()
+        Flight_NO = rows[0].Flight_NO
+        Plane_NO = rows[0].Plane_NO
+        cursor.execute(
+            "select * from [Flight_Detail] WHERE [航班号] = '{0}'".format(Flight_NO))
+        rows = cursor.fetchall()
+        self.dep_prate_label_2.setText(str(rows[0].出发准点率)+'%')
+        self.arr_prate_label_2.setText(str(rows[0].降落准点率)+'%')
+        self.dep_time_label_2.setText(str(rows[0].出发平均延误时间)+'分钟')
+        self.arr_time_label_2.setText(str(rows[0].降落平均延误时间)+'分钟')
+
+        cursor.execute(
+            "select * from [Airplane] WHERE [Plane_NO] = '{0}'".format(Plane_NO))
+        rows = cursor.fetchall()
+
+        self.model_label_2.setText(rows[0].Plane_model)
+        self.type_label_2.setText(rows[0].Plane_type)
+
+
+class Book_show(QDialog, Ui_booing_show):
+    def __init__(self, itinerary_id, price):
+        super().__init__()
+        self.setupUi(self)
+
+        self.price = price
+        self.Itinerary_id=itinerary_id
+
+        cursor.execute(
+            "select * from [Ticket] WHERE [行程号] = '{0}' AND [Price] = '{1}' ".format(itinerary_id, price))
+        row = cursor.fetchall()[0]
+        self.datetime_label.setText(
+            row.Plan_departuretime.strftime('%m月%d日 %H:%M出发'))
+        self.cabin_type_label.setText(row.Cabin_type)
+        self.flight_info_label.setText(row.Airline+' '+row.航班号1)
+        self.pay_label.setText('￥'+price)
+        self.city_label.setText(row.出发城市+'—'+row.到达城市)
+
+        self.cabin_code=row.舱位代码
+
+        cursor.execute(
+            "select * from [Passenger] WHERE [Uname] = '{0}'".format(Uname))
+        rows = cursor.fetchall()
+
+        self.passenger_tableWidget.horizontalHeader(
+        ).setSectionResizeMode(QHeaderView.Stretch)
+        self.passenger_tableWidget.clearContents()
+        self.passenger_tableWidget.setRowCount(len(rows))
+        for index, row in enumerate(rows):
+            newItem = QTableWidgetItem(row.Pname)
+            newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+            self.passenger_tableWidget.setItem(index, 1, newItem)
+            newItem = QTableWidgetItem(row.IDCard_NO)
+            newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+            self.passenger_tableWidget.setItem(index, 2, newItem)
+
+            # 插入复选框
+            check = QTableWidgetItem()
+            check.setCheckState(QtCore.Qt.Unchecked)
+
+            self.passenger_tableWidget.setItem(index, 0, check)
+
+        self.passenger_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                           QHeaderView.ResizeToContents)
+
+        self.passenger_tableWidget.cellClicked.connect(
+            self.passenger_tableWidget_cellclicked)
+        self.yes_pushButton.clicked.connect(self.yes_pushButton_clicked)
+
+    def passenger_tableWidget_cellclicked(self, row, col):
+        if col == 0:
+            self.cnt = 0
+            for i in range(self.passenger_tableWidget.rowCount()):
+                if self.passenger_tableWidget.item(i, 0).checkState():
+                    self.cnt = self.cnt+1
+            if self.cnt:
+                self.pay_label.setText('￥'+str(self.cnt*int(self.price)))
+            else:
+                self.pay_label.setText('￥'+self.price)
+
+    def yes_pushButton_clicked(self):
+        if not self.tel_num_lineEdit.text():
+            QMessageBox.warning(self, "错误", "请输入联系人！")
+            self.tel_num_lineEdit.setFocus()
+        elif self.cnt == 0:
+            QMessageBox.warning(self, "错误", "请选择乘客！")
+        else:
+            sql="DECLARE @Order_id char(12),@Passenger People;"
+            for i in range(self.passenger_tableWidget.rowCount()):
+                if self.passenger_tableWidget.item(i, 0).checkState():
+                    sql+="INSERT INTO @Passenger VALUES ('{0}','{1}');".format(self.passenger_tableWidget.item(i, 2).text(),self.passenger_tableWidget.item(i, 1).text())
+            sql+="EXEC [Create_Order] {0}, @Passenger, {1},'{2}', '{3}','{4}', @Order_id OUTPUT;".format(self.pay_label.text(),self.tel_num_lineEdit.text(),self.Itinerary_id,self.cabin_code,Uname)
+            print(sql)
+            cursor.execute(sql)
+            cursor.commit()
+            self.close()
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    if connectdatabase():
-        QtCore.qDebug('Connect database Success!')
-    else:
-        QMessageBox.about(None, "提示", "无法连接到数据库")
 
     main = MainWindows()
     main.show()

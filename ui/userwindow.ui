@@ -6082,6 +6082,11 @@ border-radius:0px</string>
        <string>订票</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>行程号</string>
+      </property>
+     </column>
     </widget>
     <widget class="QLabel" name="date_label_2">
      <property name="geometry">
