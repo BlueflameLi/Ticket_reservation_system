@@ -611,8 +611,44 @@ class AdminWindow(QWidget, Ui_AdminWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.flight_date_dateEdit.setCalendarPopup(True)
-        self.flight_date_dateEdit.setDate(QtCore.QDate.currentDate())
+        # 弹出日历
+        self.date_dateEdit.setCalendarPopup(True)
+        self.date_dateEdit_2.setCalendarPopup(True)
+
+        # 设置为当前日期
+        currentdate = QtCore.QDate.currentDate()
+        self.date_dateEdit.setDate(currentdate)
+        self.date_dateEdit_2.setDate(currentdate)
+
+        # 使行列头自适应宽度
+        self.flight_tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.order_tableWidget.horizontalHeader(
+        ).setSectionResizeMode(QHeaderView.Stretch)
+
+        self.flight_no_search_radioButton.setChecked(True)
+        self.flight_no_search_radioButton_2.setChecked(True)
+
+        self.date_dateEdit.hide()
+        self.date_dateEdit_2.hide()
+        self.date_label.hide()
+        self.date_label_2.hide()
+
+        self.menu_flight_pushButton.clicked.connect(
+            self.menu_flight_pushButton_clicked)
+        self.menu_order_pushButton.clicked.connect(
+            self.menu_order_pushButton_clicked)
+        self.menu_ticket_pushButton.clicked.connect(
+            self.menu_ticket_pushButton_clicked)
+
+        self.logout_pushButton.clicked.connect(self.logout_pushButton_clicked)
+
+        self.flight_search_pushButton.clicked.connect(
+            self.flight_search_pushButton_clicked)
+        self.ticket_pushButton.clicked.connect(self.ticket_pushButton_clicked)
+
+        self.order_search_pushButton.clicked.connect(
+            self.order_search_pushButton_clicked)
 
     def paintEvent(self, event):
         painter = QPainter(self)
@@ -620,6 +656,358 @@ class AdminWindow(QWidget, Ui_AdminWindow):
         pixmap = QPixmap(":/image/images/adminbackground.jpg")
         # 绘制窗口背景，平铺到整个窗口，随着窗口改变而改变
         painter.drawPixmap(self.rect(), pixmap)
+
+    def menu_order_pushButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.order_page)
+
+    def menu_ticket_pushButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.ticket_page)
+
+    def menu_flight_pushButton_clicked(self):
+        self.stackedWidget.setCurrentWidget(self.flight_page)
+
+    def logout_pushButton_clicked(self):
+        reply = QMessageBox.question(
+            self, "提示", "是否退出登录", QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.close()
+            self.mw = MainWindows()
+            self.mw.setWindowTitle("航空机票预订系统")
+            self.mw.show()
+
+    def flight_search_pushButton_clicked(self):
+        if self.flight_no_search_radioButton.isChecked():
+            if not self.flight_no_lineEdit.text():
+                QMessageBox.warning(self, "错误", "请输入航班号！")
+            else:
+                cursor.execute(
+                    "select * from [Flight] WHERE [Flight_NO]='{0}'".format(self.flight_no_lineEdit.text()))
+                rows = cursor.fetchall()
+                if not rows:
+                    QMessageBox.warning(self, "错误", "请输入正确的航班号！")
+                else:
+                    cursor.execute(
+                        "select * from [Flights] WHERE [航班号]='{0}' order by [Plan_departuretime],[Plan_arrivaltime]".format(self.flight_no_lineEdit.text()))
+                    rows = cursor.fetchall()
+
+                    self.flight_tableWidget.clearContents()
+                    self.flight_tableWidget.setRowCount(len(rows))
+                    for index, row in enumerate(rows):
+                        newItem = QTableWidgetItem(row.Airline+' '+row.航班号)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 1, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Plan_departuretime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 2, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Departuretime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 3, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Plan_arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 4, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 5, newItem)
+                        newItem = QTableWidgetItem(str(row.Mileage))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 6, newItem)
+                        newItem = QTableWidgetItem(str(row.Plane_NO))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 7, newItem)
+                        newItem = QTableWidgetItem(
+                            row.出发城市+row.出发机场名+row.Departure_teminal)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 8, newItem)
+                        newItem = QTableWidgetItem(
+                            row.到达城市+row.到达机场名+row.Arrival_teminal)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 9, newItem)
+                        newItem = QTableWidgetItem(row.Flight_status)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.flight_tableWidget.setItem(index, 10, newItem)
+
+                        # 插入复选框
+                        check = QTableWidgetItem()
+                        check.setCheckState(QtCore.Qt.Unchecked)
+                        self.flight_tableWidget.setItem(index, 0, check)
+
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(1,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(2,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(3,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(4,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.flight_tableWidget.horizontalHeader().setSectionResizeMode(5,
+                                                                                    QHeaderView.ResizeToContents)
+
+        elif self.flight_date_search_radioButton.isChecked():
+            cursor.execute(
+                "select * from [Flights] WHERE [Plan_departuredate] = '{0}' order by [Plan_departuretime],[Plan_arrivaltime]".format(self.date_dateEdit.date().toString('yyyy-MM-dd')))
+            rows = cursor.fetchall()
+
+            self.flight_tableWidget.clearContents()
+            self.flight_tableWidget.setRowCount(len(rows))
+            for index, row in enumerate(rows):
+                newItem = QTableWidgetItem(row.Airline+' '+row.航班号)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 1, newItem)
+                newItem = QTableWidgetItem(
+                    row.Plan_departuretime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 2, newItem)
+                newItem = QTableWidgetItem(
+                    row.Departuretime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 3, newItem)
+                newItem = QTableWidgetItem(
+                    row.Plan_arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 4, newItem)
+                newItem = QTableWidgetItem(
+                    row.Arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 5, newItem)
+                newItem = QTableWidgetItem(str(row.Mileage))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 6, newItem)
+                newItem = QTableWidgetItem(str(row.Plane_NO))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 7, newItem)
+                newItem = QTableWidgetItem(
+                    row.出发城市+row.出发机场名+row.Departure_teminal)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 8, newItem)
+                newItem = QTableWidgetItem(
+                    row.到达城市+row.到达机场名+row.Arrival_teminal)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 9, newItem)
+                newItem = QTableWidgetItem(row.Flight_status)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.flight_tableWidget.setItem(index, 10, newItem)
+                # 插入复选框
+                check = QTableWidgetItem()
+                check.setCheckState(QtCore.Qt.Unchecked)
+                self.flight_tableWidget.setItem(index, 0, check)
+
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                            QHeaderView.ResizeToContents)
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(1,
+                                                                            QHeaderView.ResizeToContents)
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(2,
+                                                                            QHeaderView.ResizeToContents)
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(3,
+                                                                            QHeaderView.ResizeToContents)
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(4,
+                                                                            QHeaderView.ResizeToContents)
+            self.flight_tableWidget.horizontalHeader().setSectionResizeMode(5,
+                                                                            QHeaderView.ResizeToContents)
+
+    def ticket_pushButton_clicked(self):
+        if self.flight_no_search_radioButton_2.isChecked():
+            if not self.flight_no_lineEdit_2.text():
+                QMessageBox.warning(self, "错误", "请输入航班号！")
+            else:
+                cursor.execute(
+                    "select * from [Flight] WHERE [Flight_NO]='{0}'".format(self.flight_no_lineEdit_2.text()))
+                rows = cursor.fetchall()
+                if not rows:
+                    QMessageBox.warning(self, "错误", "请输入正确的航班号！")
+                else:
+                    cursor.execute(
+                        "select * from [Ticket] WHERE [航班号1]='{0}' order by [Plan_departuretime],[Plan_arrivaltime]".format(self.flight_no_lineEdit_2.text()))
+                    rows = cursor.fetchall()
+
+                    self.ticket_tableWidget.clearContents()
+                    self.ticket_tableWidget.setRowCount(len(rows))
+                    for index, row in enumerate(rows):
+                        newItem = QTableWidgetItem(row.Airline+' '+row.航班号1)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 1, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Plan_departuretime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 2, newItem)
+                        newItem = QTableWidgetItem(
+                            row.Plan_arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 3, newItem)
+                        newItem = QTableWidgetItem(
+                            row.出发城市+row.起飞机场名+row.Departure_teminal)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 4, newItem)
+                        newItem = QTableWidgetItem(
+                            row.到达城市+row.到达机场名+row.Arrival_teminal)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 5, newItem)
+                        newItem = QTableWidgetItem(row.飞机号)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 6, newItem)
+                        newItem = QTableWidgetItem(row.舱位代码)
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 7, newItem)
+                        newItem = QTableWidgetItem(str(row.Price))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 8, newItem)
+                        newItem = QTableWidgetItem(str(row.remaining))
+                        newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                        self.ticket_tableWidget.setItem(index, 9, newItem)
+
+                        # 插入复选框
+                        check = QTableWidgetItem()
+                        check.setCheckState(QtCore.Qt.Unchecked)
+                        self.ticket_tableWidget.setItem(index, 0, check)
+
+                    self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(1,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(2,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(3,
+                                                                                    QHeaderView.ResizeToContents)
+                    self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(4,
+                                                                                    QHeaderView.ResizeToContents)
+
+        elif self.flight_date_search_radioButton_2.isChecked():
+            cursor.execute(
+                "select * from [Ticket] WHERE [Plan_departuredate] = '{0}' order by [Plan_departuretime],[Plan_arrivaltime]".format(self.date_dateEdit_2.date().toString('yyyy-MM-dd')))
+            rows = cursor.fetchall()
+
+            self.ticket_tableWidget.clearContents()
+            self.ticket_tableWidget.setRowCount(len(rows))
+            for index, row in enumerate(rows):
+                newItem = QTableWidgetItem(row.Airline+' '+row.航班号1)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 1, newItem)
+                newItem = QTableWidgetItem(
+                    row.Plan_departuretime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 2, newItem)
+                newItem = QTableWidgetItem(
+                    row.Plan_arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 3, newItem)
+                newItem = QTableWidgetItem(
+                    row.出发城市+row.起飞机场名+row.Departure_teminal)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 4, newItem)
+                newItem = QTableWidgetItem(
+                    row.到达城市+row.到达机场名+row.Arrival_teminal)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 5, newItem)
+                newItem = QTableWidgetItem(row.飞机号)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 6, newItem)
+                newItem = QTableWidgetItem(row.舱位代码)
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 7, newItem)
+                newItem = QTableWidgetItem(str(row.Price))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 8, newItem)
+                newItem = QTableWidgetItem(str(row.remaining))
+                newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                self.ticket_tableWidget.setItem(index, 9, newItem)
+
+                # 插入复选框
+                check = QTableWidgetItem()
+                check.setCheckState(QtCore.Qt.Unchecked)
+                self.ticket_tableWidget.setItem(index, 0, check)
+
+            self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                            QHeaderView.ResizeToContents)
+            self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(1,
+                                                                            QHeaderView.ResizeToContents)
+            self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(2,
+                                                                            QHeaderView.ResizeToContents)
+            self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(3,
+                                                                            QHeaderView.ResizeToContents)
+            self.ticket_tableWidget.horizontalHeader().setSectionResizeMode(4,
+                                                                            QHeaderView.ResizeToContents)
+
+    def order_search_pushButton_clicked(self):
+        if not self.order_num_lineEdit.text():
+            QMessageBox.warning(self, "错误", "请输入订单号！")
+            self.order_num_lineEdit.setFocus()
+        else:
+            cursor.execute(
+                "select * from [Order_Detail] WHERE [Order_id] = '{0}' order by [Order_time] DESC".format(self.order_num_lineEdit.text()))
+            rows = cursor.fetchall()
+            if not rows:
+                QMessageBox.warning(self, "错误", "请输入正确的订单号！")
+                self.order_num_lineEdit.clear()
+                self.order_num_lineEdit.setFocus()
+            else:
+                self.order_tableWidget.clearContents()
+                self.order_tableWidget.setRowCount(len(rows))
+                for index, row in enumerate(rows):
+                    newItem = QTableWidgetItem(row.Order_id)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 1, newItem)
+                    newItem = QTableWidgetItem(row.Airline+' '+row.航班号)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 2, newItem)
+                    newItem = QTableWidgetItem(row.Contact_Phone)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 3, newItem)
+                    newItem = QTableWidgetItem(row.Uname)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 4, newItem)
+                    newItem = QTableWidgetItem(
+                        row.Plan_departuretime.strftime('%Y-%m-%d %H:%M'))
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 5, newItem)
+                    newItem = QTableWidgetItem(
+                        row.Plan_arrivaltime.strftime('%Y-%m-%d %H:%M'))
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 6, newItem)
+                    newItem = QTableWidgetItem(
+                        row.出发城市+row.起飞机场名+row.Departure_teminal)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 7, newItem)
+                    newItem = QTableWidgetItem(
+                        row.到达城市+row.到达机场名+row.Arrival_teminal)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 8, newItem)
+                    newItem = QTableWidgetItem(str(row.Order_pay))
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 9, newItem)
+                    newItem = QTableWidgetItem(
+                        row.Order_time.strftime('%Y-%m-%d %H:%M'))
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 10, newItem)
+                    newItem = QTableWidgetItem(row.Order_status)
+                    newItem.setTextAlignment(QtCore.Qt.AlignCenter)
+                    self.order_tableWidget.setItem(index, 11, newItem)
+
+                    # 插入复选框
+                    check = QTableWidgetItem()
+                    check.setCheckState(QtCore.Qt.Unchecked)
+                    self.order_tableWidget.setItem(index, 0, check)
+
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(0,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(1,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(2,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(3,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(5,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(6,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(7,
+                                                                               QHeaderView.ResizeToContents)
+                self.order_tableWidget.horizontalHeader().setSectionResizeMode(8,
+                                                                               QHeaderView.ResizeToContents)
 
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@
     <number>2</number>
    </property>
    <widget class="QWidget" name="order_page">
-    <widget class="QPushButton" name="order_que_pushButton">
+    <widget class="QPushButton" name="order_search_pushButton">
      <property name="geometry">
       <rect>
        <x>550</x>
@@ -1681,7 +1681,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <string>订单号:</string>
      </property>
     </widget>
-    <widget class="QTableWidget" name="order_info_tableWidget">
+    <widget class="QTableWidget" name="order_tableWidget">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -2095,7 +2095,7 @@ border-radius:0pxborder:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>航班号</string>
+       <string>航班信息</string>
       </property>
      </column>
      <column>
@@ -2110,12 +2110,12 @@ border-radius:0pxborder:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>起飞日期</string>
+       <string>起飞时间</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>起飞时间</string>
+       <string>到达时间</string>
       </property>
      </column>
      <column>
@@ -2548,7 +2548,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <string>添加机票</string>
      </property>
     </widget>
-    <widget class="QLabel" name="flight_date_label_3">
+    <widget class="QLabel" name="date_label_2">
      <property name="geometry">
       <rect>
        <x>430</x>
@@ -3011,7 +3011,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <string>搜索</string>
      </property>
     </widget>
-    <widget class="QDateEdit" name="flight_date_dateEdit_3">
+    <widget class="QDateEdit" name="date_dateEdit_2">
      <property name="geometry">
       <rect>
        <x>520</x>
@@ -3475,12 +3475,7 @@ border-radius:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>航班号</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>计划起飞日期</string>
+       <string>航班信息</string>
       </property>
      </column>
      <column>
@@ -3491,6 +3486,16 @@ border-radius:0px</string>
      <column>
       <property name="text">
        <string>计划到达时间</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>出发机场</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>到达机场</string>
       </property>
      </column>
      <column>
@@ -4762,7 +4767,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <string>航班号：</string>
      </property>
     </widget>
-    <widget class="QLabel" name="flight_date_label">
+    <widget class="QLabel" name="date_label">
      <property name="geometry">
       <rect>
        <x>430</x>
@@ -5616,7 +5621,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <string>删除航班</string>
      </property>
     </widget>
-    <widget class="QDateEdit" name="flight_date_dateEdit">
+    <widget class="QDateEdit" name="date_dateEdit">
      <property name="geometry">
       <rect>
        <x>520</x>
@@ -6045,12 +6050,7 @@ border-radius:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>航班号</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>计划起飞日期</string>
+       <string>航班信息</string>
       </property>
      </column>
      <column>
@@ -6080,7 +6080,7 @@ border-radius:0px</string>
      </column>
      <column>
       <property name="text">
-       <string>机型</string>
+       <string>飞机号</string>
       </property>
      </column>
      <column>
@@ -6905,7 +6905,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <string>退出登录</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="menu_order_info_pushButton">
+  <widget class="QPushButton" name="menu_order_pushButton">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -7307,7 +7307,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <string>订单管理</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="menu_flight_info_pushButton">
+  <widget class="QPushButton" name="menu_flight_pushButton">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -7709,7 +7709,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <string>航班管理</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="menu_pasnger_info_pushButton">
+  <widget class="QPushButton" name="menu_ticket_pushButton">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -8113,5 +8113,294 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>date_label</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>date_dateEdit</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>640</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>date_dateEdit</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>640</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_label</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>date_label</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_label</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>date_label_2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>date_dateEdit_2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>640</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_label_2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit_2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_date_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit_2</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>640</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>date_dateEdit_2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>640</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>date_label_2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_label_2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>154</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>flight_no_search_radioButton_2</sender>
+   <signal>clicked()</signal>
+   <receiver>flight_no_lineEdit_2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>635</x>
+     <y>155</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

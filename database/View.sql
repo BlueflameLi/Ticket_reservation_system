@@ -19,7 +19,8 @@ SELECT  [I].[Flight_NO] AS '航班号',
         [Flight_status],
         [Mileage],
         ABS(DATEDIFF(mi,[Arrivaltime],[Departuretime])) AS '飞行时长',
-        [Itinerary_id]
+        [Itinerary_id],
+        [Plane_NO]
 FROM [dbo].[Itinerary] [I]
 JOIN [dbo].[Flight] [F]
 ON [I].[Flight_NO]=[F].[Flight_NO]
@@ -83,6 +84,7 @@ SELECT [F].[Flight_NO] AS '航班号1',
        [Arrival_teminal],
        [Cabin_type],
        [Price],
+       [remaining],
        [降落准点率],
        [I].[Itinerary_id] AS '行程号',
        [IC].[Plane_NO] AS '飞机号',
@@ -119,8 +121,8 @@ SELECT [Order_id],
        [a1].[Airport_name] AS '起飞机场名',
        [Departure_teminal],
        [a2].[City] AS '到达城市',
-       [a2].[Airport_name] AS '达到机场名',
-        [Arrival_teminal],
+       [a2].[Airport_name] AS '到达机场名',
+       [Arrival_teminal],
        [Itinerary].[Flight_NO] AS '航班号',
        [Cabin_type],
        [Uname],
