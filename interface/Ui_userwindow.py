@@ -19,7 +19,7 @@ class Ui_UserWindow(object):
         self.my_home_page = QtWidgets.QWidget()
         self.my_home_page.setObjectName("my_home_page")
         self.my_home_label = QtWidgets.QLabel(self.my_home_page)
-        self.my_home_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.my_home_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -2434,7 +2434,7 @@ class Ui_UserWindow(object):
         self.order_page = QtWidgets.QWidget()
         self.order_page.setObjectName("order_page")
         self.order_cen_tableWidget = QtWidgets.QTableWidget(self.order_page)
-        self.order_cen_tableWidget.setGeometry(QtCore.QRect(320, 120, 711, 351))
+        self.order_cen_tableWidget.setGeometry(QtCore.QRect(250, 120, 781, 351))
         self.order_cen_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -2840,7 +2840,7 @@ class Ui_UserWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.order_cen_tableWidget.setHorizontalHeaderItem(5, item)
         self.order_cen_label = QtWidgets.QLabel(self.order_page)
-        self.order_cen_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.order_cen_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -2859,7 +2859,7 @@ class Ui_UserWindow(object):
         self.flight_page = QtWidgets.QWidget()
         self.flight_page.setObjectName("flight_page")
         self.flight_label = QtWidgets.QLabel(self.flight_page)
-        self.flight_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.flight_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -5260,7 +5260,7 @@ class Ui_UserWindow(object):
         self.ticket_page = QtWidgets.QWidget()
         self.ticket_page.setObjectName("ticket_page")
         self.ticket_tableWidget = QtWidgets.QTableWidget(self.ticket_page)
-        self.ticket_tableWidget.setGeometry(QtCore.QRect(210, 170, 911, 331))
+        self.ticket_tableWidget.setGeometry(QtCore.QRect(180, 170, 971, 331))
         self.ticket_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -6070,7 +6070,7 @@ class Ui_UserWindow(object):
 "")
         self.date_label_2.setObjectName("date_label_2")
         self.ticket_label = QtWidgets.QLabel(self.ticket_page)
-        self.ticket_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.ticket_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -8083,7 +8083,7 @@ class Ui_UserWindow(object):
         self.passenger_label.setFont(font)
         self.passenger_label.setObjectName("passenger_label")
         self.passenger_tableWidget = QtWidgets.QTableWidget(self.passenger_page)
-        self.passenger_tableWidget.setGeometry(QtCore.QRect(340, 70, 361, 441))
+        self.passenger_tableWidget.setGeometry(QtCore.QRect(340, 70, 381, 441))
         self.passenger_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"

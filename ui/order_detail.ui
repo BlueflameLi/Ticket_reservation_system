@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Order_detail</class>
+ <widget class="QDialog" name="Order_detail">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -121,9 +121,9 @@
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>20</y>
-     <width>191</width>
-     <height>21</height>
+     <y>10</y>
+     <width>221</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -146,22 +146,22 @@
    </property>
    <column>
     <property name="text">
-     <string>新建列</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>性别</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
      <string>姓名</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>身份证号</string>
+     <string>乘客类型</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>证件类型</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>票号</string>
     </property>
    </column>
   </widget>
@@ -227,8 +227,8 @@
     <rect>
      <x>200</x>
      <y>60</y>
-     <width>201</width>
-     <height>16</height>
+     <width>271</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">

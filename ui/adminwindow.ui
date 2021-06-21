@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="order_page">
     <widget class="QPushButton" name="order_search_pushButton">
@@ -835,7 +835,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>171</width>
+       <width>201</width>
        <height>41</height>
       </rect>
      </property>
@@ -1659,9 +1659,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="order_num_label">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>60</x>
        <y>70</y>
-       <width>81</width>
+       <width>101</width>
        <height>41</height>
       </rect>
      </property>
@@ -1684,10 +1684,10 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QTableWidget" name="order_tableWidget">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>20</x>
        <y>150</y>
-       <width>1211</width>
-       <height>351</height>
+       <width>1281</width>
+       <height>381</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -2149,7 +2149,7 @@ border-radius:0pxborder:0px</string>
     <widget class="QPushButton" name="ticket_add_pushButton">
      <property name="geometry">
       <rect>
-       <x>1160</x>
+       <x>1210</x>
        <y>200</y>
        <width>111</width>
        <height>41</height>
@@ -2551,9 +2551,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="date_label_2">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>410</x>
        <y>50</y>
-       <width>81</width>
+       <width>91</width>
        <height>30</height>
       </rect>
      </property>
@@ -2575,7 +2575,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="flight_no_label_2">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>430</x>
        <y>50</y>
        <width>71</width>
        <height>30</height>
@@ -3049,7 +3049,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>171</width>
+       <width>201</width>
        <height>41</height>
       </rect>
      </property>
@@ -3069,9 +3069,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QTableWidget" name="ticket_tableWidget">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>220</x>
        <y>130</y>
-       <width>891</width>
+       <width>931</width>
        <height>331</height>
       </rect>
      </property>
@@ -3518,11 +3518,16 @@ border-radius:0px</string>
        <string>余量</string>
       </property>
      </column>
+     <column>
+      <property name="text">
+       <string>行程号</string>
+      </property>
+     </column>
     </widget>
     <widget class="QPushButton" name="ticket_delete_pushButton">
      <property name="geometry">
       <rect>
-       <x>1160</x>
+       <x>1210</x>
        <y>330</y>
        <width>111</width>
        <height>41</height>
@@ -4327,7 +4332,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
       <rect>
        <x>20</x>
        <y>10</y>
-       <width>171</width>
+       <width>201</width>
        <height>41</height>
       </rect>
      </property>
@@ -4746,9 +4751,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="flight_no_label">
      <property name="geometry">
       <rect>
-       <x>440</x>
+       <x>430</x>
        <y>50</y>
-       <width>71</width>
+       <width>81</width>
        <height>30</height>
       </rect>
      </property>
@@ -4770,9 +4775,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QLabel" name="date_label">
      <property name="geometry">
       <rect>
-       <x>430</x>
+       <x>410</x>
        <y>50</y>
-       <width>81</width>
+       <width>91</width>
        <height>30</height>
       </rect>
      </property>
@@ -5644,9 +5649,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <widget class="QTableWidget" name="flight_tableWidget">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>74</x>
        <y>110</y>
-       <width>1105</width>
+       <width>1221</width>
        <height>331</height>
       </rect>
      </property>
@@ -6096,6 +6101,11 @@ border-radius:0px</string>
      <column>
       <property name="text">
        <string>航班状态</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>行程号</string>
       </property>
      </column>
     </widget>

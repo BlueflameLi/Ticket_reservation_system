@@ -798,7 +798,7 @@ class Ui_AdminWindow(object):
 "")
         self.order_del_pushButton.setObjectName("order_del_pushButton")
         self.order_info_label = QtWidgets.QLabel(self.order_page)
-        self.order_info_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.order_info_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -1589,7 +1589,7 @@ class Ui_AdminWindow(object):
 "")
         self.order_num_lineEdit.setObjectName("order_num_lineEdit")
         self.order_num_label = QtWidgets.QLabel(self.order_page)
-        self.order_num_label.setGeometry(QtCore.QRect(70, 70, 81, 41))
+        self.order_num_label.setGeometry(QtCore.QRect(60, 70, 101, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(16)
@@ -1600,7 +1600,7 @@ class Ui_AdminWindow(object):
         self.order_num_label.setStyleSheet("")
         self.order_num_label.setObjectName("order_num_label")
         self.order_tableWidget = QtWidgets.QTableWidget(self.order_page)
-        self.order_tableWidget.setGeometry(QtCore.QRect(70, 150, 1211, 351))
+        self.order_tableWidget.setGeometry(QtCore.QRect(20, 150, 1281, 381))
         self.order_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -2020,7 +2020,7 @@ class Ui_AdminWindow(object):
         self.ticket_page = QtWidgets.QWidget()
         self.ticket_page.setObjectName("ticket_page")
         self.ticket_add_pushButton = QtWidgets.QPushButton(self.ticket_page)
-        self.ticket_add_pushButton.setGeometry(QtCore.QRect(1160, 200, 111, 41))
+        self.ticket_add_pushButton.setGeometry(QtCore.QRect(1210, 200, 111, 41))
         self.ticket_add_pushButton.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -2410,7 +2410,7 @@ class Ui_AdminWindow(object):
 "")
         self.ticket_add_pushButton.setObjectName("ticket_add_pushButton")
         self.date_label_2 = QtWidgets.QLabel(self.ticket_page)
-        self.date_label_2.setGeometry(QtCore.QRect(430, 50, 81, 30))
+        self.date_label_2.setGeometry(QtCore.QRect(410, 50, 91, 30))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(12)
@@ -2420,7 +2420,7 @@ class Ui_AdminWindow(object):
         self.date_label_2.setStyleSheet("")
         self.date_label_2.setObjectName("date_label_2")
         self.flight_no_label_2 = QtWidgets.QLabel(self.ticket_page)
-        self.flight_no_label_2.setGeometry(QtCore.QRect(440, 50, 71, 30))
+        self.flight_no_label_2.setGeometry(QtCore.QRect(430, 50, 71, 30))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(12)
@@ -2830,7 +2830,7 @@ class Ui_AdminWindow(object):
         self.flight_date_search_radioButton_2.setGeometry(QtCore.QRect(570, 10, 101, 21))
         self.flight_date_search_radioButton_2.setObjectName("flight_date_search_radioButton_2")
         self.ticket_label = QtWidgets.QLabel(self.ticket_page)
-        self.ticket_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.ticket_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -2840,7 +2840,7 @@ class Ui_AdminWindow(object):
         self.ticket_label.setFont(font)
         self.ticket_label.setObjectName("ticket_label")
         self.ticket_tableWidget = QtWidgets.QTableWidget(self.ticket_page)
-        self.ticket_tableWidget.setGeometry(QtCore.QRect(230, 130, 891, 331))
+        self.ticket_tableWidget.setGeometry(QtCore.QRect(220, 130, 931, 331))
         self.ticket_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -3230,7 +3230,7 @@ class Ui_AdminWindow(object):
 "\n"
 "border-radius:0px")
         self.ticket_tableWidget.setObjectName("ticket_tableWidget")
-        self.ticket_tableWidget.setColumnCount(10)
+        self.ticket_tableWidget.setColumnCount(11)
         self.ticket_tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.ticket_tableWidget.setHorizontalHeaderItem(0, item)
@@ -3252,8 +3252,10 @@ class Ui_AdminWindow(object):
         self.ticket_tableWidget.setHorizontalHeaderItem(8, item)
         item = QtWidgets.QTableWidgetItem()
         self.ticket_tableWidget.setHorizontalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.ticket_tableWidget.setHorizontalHeaderItem(10, item)
         self.ticket_delete_pushButton = QtWidgets.QPushButton(self.ticket_page)
-        self.ticket_delete_pushButton.setGeometry(QtCore.QRect(1160, 330, 111, 41))
+        self.ticket_delete_pushButton.setGeometry(QtCore.QRect(1210, 330, 111, 41))
         self.ticket_delete_pushButton.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -4036,7 +4038,7 @@ class Ui_AdminWindow(object):
         self.flight_page = QtWidgets.QWidget()
         self.flight_page.setObjectName("flight_page")
         self.flight_label = QtWidgets.QLabel(self.flight_page)
-        self.flight_label.setGeometry(QtCore.QRect(20, 10, 171, 41))
+        self.flight_label.setGeometry(QtCore.QRect(20, 10, 201, 41))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(28)
@@ -4436,7 +4438,7 @@ class Ui_AdminWindow(object):
 "")
         self.flight_no_lineEdit.setObjectName("flight_no_lineEdit")
         self.flight_no_label = QtWidgets.QLabel(self.flight_page)
-        self.flight_no_label.setGeometry(QtCore.QRect(440, 50, 71, 30))
+        self.flight_no_label.setGeometry(QtCore.QRect(430, 50, 81, 30))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(12)
@@ -4446,7 +4448,7 @@ class Ui_AdminWindow(object):
         self.flight_no_label.setStyleSheet("")
         self.flight_no_label.setObjectName("flight_no_label")
         self.date_label = QtWidgets.QLabel(self.flight_page)
-        self.date_label.setGeometry(QtCore.QRect(430, 50, 81, 30))
+        self.date_label.setGeometry(QtCore.QRect(410, 50, 91, 30))
         font = QtGui.QFont()
         font.setFamily("Adobe Arabic")
         font.setPointSize(12)
@@ -5246,7 +5248,7 @@ class Ui_AdminWindow(object):
         self.date_dateEdit.setDateTime(QtCore.QDateTime(QtCore.QDate(2021, 6, 21), QtCore.QTime(0, 0, 0)))
         self.date_dateEdit.setObjectName("date_dateEdit")
         self.flight_tableWidget = QtWidgets.QTableWidget(self.flight_page)
-        self.flight_tableWidget.setGeometry(QtCore.QRect(140, 110, 1105, 331))
+        self.flight_tableWidget.setGeometry(QtCore.QRect(74, 110, 1221, 331))
         self.flight_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -5636,7 +5638,7 @@ class Ui_AdminWindow(object):
 "\n"
 "border-radius:0px")
         self.flight_tableWidget.setObjectName("flight_tableWidget")
-        self.flight_tableWidget.setColumnCount(11)
+        self.flight_tableWidget.setColumnCount(12)
         self.flight_tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.flight_tableWidget.setHorizontalHeaderItem(0, item)
@@ -5660,6 +5662,8 @@ class Ui_AdminWindow(object):
         self.flight_tableWidget.setHorizontalHeaderItem(9, item)
         item = QtWidgets.QTableWidgetItem()
         self.flight_tableWidget.setHorizontalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.flight_tableWidget.setHorizontalHeaderItem(11, item)
         self.flight_add_pushButton = QtWidgets.QPushButton(self.flight_page)
         self.flight_add_pushButton.setGeometry(QtCore.QRect(440, 470, 111, 41))
         self.flight_add_pushButton.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
@@ -7613,7 +7617,7 @@ class Ui_AdminWindow(object):
         self.menu_ticket_pushButton.setObjectName("menu_ticket_pushButton")
 
         self.retranslateUi(AdminWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
         self.flight_no_search_radioButton.clicked.connect(self.date_label.hide)
         self.flight_no_search_radioButton.clicked.connect(self.date_dateEdit.hide)
         self.flight_no_search_radioButton.clicked.connect(self.flight_no_lineEdit.show)
@@ -7691,6 +7695,8 @@ class Ui_AdminWindow(object):
         item.setText(_translate("AdminWindow", "价格"))
         item = self.ticket_tableWidget.horizontalHeaderItem(9)
         item.setText(_translate("AdminWindow", "余量"))
+        item = self.ticket_tableWidget.horizontalHeaderItem(10)
+        item.setText(_translate("AdminWindow", "行程号"))
         self.ticket_delete_pushButton.setText(_translate("AdminWindow", "删除机票"))
         self.flight_label.setText(_translate("AdminWindow", "航班管理"))
         self.flight_no_label.setText(_translate("AdminWindow", "航班号："))
@@ -7720,6 +7726,8 @@ class Ui_AdminWindow(object):
         item.setText(_translate("AdminWindow", "到达机场"))
         item = self.flight_tableWidget.horizontalHeaderItem(10)
         item.setText(_translate("AdminWindow", "航班状态"))
+        item = self.flight_tableWidget.horizontalHeaderItem(11)
+        item.setText(_translate("AdminWindow", "行程号"))
         self.flight_add_pushButton.setText(_translate("AdminWindow", "添加航班"))
         self.logout_pushButton.setText(_translate("AdminWindow", "退出登录"))
         self.menu_order_pushButton.setText(_translate("AdminWindow", "订单管理"))

@@ -11,39 +11,39 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_booing_show(object):
     def setupUi(self, booing_show):
         booing_show.setObjectName("booing_show")
-        booing_show.resize(483, 523)
+        booing_show.resize(511, 531)
         self.flight_info_label = QtWidgets.QLabel(booing_show)
-        self.flight_info_label.setGeometry(QtCore.QRect(250, 90, 151, 21))
+        self.flight_info_label.setGeometry(QtCore.QRect(290, 90, 171, 21))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.flight_info_label.setFont(font)
         self.flight_info_label.setObjectName("flight_info_label")
         self.label = QtWidgets.QLabel(booing_show)
-        self.label.setGeometry(QtCore.QRect(160, 0, 111, 31))
+        self.label.setGeometry(QtCore.QRect(150, 10, 131, 31))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.datetime_label = QtWidgets.QLabel(booing_show)
-        self.datetime_label.setGeometry(QtCore.QRect(40, 40, 181, 31))
+        self.datetime_label.setGeometry(QtCore.QRect(40, 40, 201, 31))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.datetime_label.setFont(font)
         self.datetime_label.setObjectName("datetime_label")
         self.cabin_label = QtWidgets.QLabel(booing_show)
-        self.cabin_label.setGeometry(QtCore.QRect(250, 50, 91, 21))
+        self.cabin_label.setGeometry(QtCore.QRect(280, 50, 91, 21))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.cabin_label.setFont(font)
         self.cabin_label.setObjectName("cabin_label")
         self.cabin_type_label = QtWidgets.QLabel(booing_show)
-        self.cabin_type_label.setGeometry(QtCore.QRect(350, 50, 71, 21))
+        self.cabin_type_label.setGeometry(QtCore.QRect(380, 50, 81, 21))
         font = QtGui.QFont()
         font.setPointSize(13)
         self.cabin_type_label.setFont(font)
         self.cabin_type_label.setObjectName("cabin_type_label")
         self.city_label = QtWidgets.QLabel(booing_show)
-        self.city_label.setGeometry(QtCore.QRect(30, 80, 191, 31))
+        self.city_label.setGeometry(QtCore.QRect(30, 80, 221, 31))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.city_label.setFont(font)
@@ -439,7 +439,7 @@ class Ui_booing_show(object):
 "")
         self.add_pushButton.setObjectName("add_pushButton")
         self.yes_pushButton = QtWidgets.QPushButton(booing_show)
-        self.yes_pushButton.setGeometry(QtCore.QRect(90, 460, 100, 40))
+        self.yes_pushButton.setGeometry(QtCore.QRect(100, 460, 100, 40))
         self.yes_pushButton.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -829,13 +829,13 @@ class Ui_booing_show(object):
 "")
         self.yes_pushButton.setObjectName("yes_pushButton")
         self.pay_label = QtWidgets.QLabel(booing_show)
-        self.pay_label.setGeometry(QtCore.QRect(350, 150, 121, 31))
+        self.pay_label.setGeometry(QtCore.QRect(380, 150, 121, 31))
         font = QtGui.QFont()
         font.setPointSize(20)
         self.pay_label.setFont(font)
         self.pay_label.setObjectName("pay_label")
         self.no_pushButton = QtWidgets.QPushButton(booing_show)
-        self.no_pushButton.setGeometry(QtCore.QRect(260, 460, 100, 40))
+        self.no_pushButton.setGeometry(QtCore.QRect(270, 460, 100, 40))
         self.no_pushButton.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -1621,7 +1621,7 @@ class Ui_booing_show(object):
 "")
         self.tel_num_label.setObjectName("tel_num_label")
         self.tel_num_lineEdit = QtWidgets.QLineEdit(booing_show)
-        self.tel_num_lineEdit.setGeometry(QtCore.QRect(160, 380, 191, 31))
+        self.tel_num_lineEdit.setGeometry(QtCore.QRect(210, 380, 201, 31))
         self.tel_num_lineEdit.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"
@@ -2012,7 +2012,7 @@ class Ui_booing_show(object):
         self.tel_num_lineEdit.setText("")
         self.tel_num_lineEdit.setObjectName("tel_num_lineEdit")
         self.passenger_tableWidget = QtWidgets.QTableWidget(booing_show)
-        self.passenger_tableWidget.setGeometry(QtCore.QRect(20, 140, 311, 171))
+        self.passenger_tableWidget.setGeometry(QtCore.QRect(20, 140, 351, 171))
         self.passenger_tableWidget.setStyleSheet("QPalette{background:#D7DBE4;}QGroupBox#gboxDevicePanel>QLabel{color:#E7ECF0;}\n"
 "\n"
 "QWidget#frmMain,QWidget[Form=\"true\"]{\n"

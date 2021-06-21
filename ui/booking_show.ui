@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>483</width>
-    <height>523</height>
+    <width>511</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QLabel" name="flight_info_label">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>290</x>
      <y>90</y>
-     <width>151</width>
+     <width>171</width>
      <height>21</height>
     </rect>
    </property>
@@ -34,9 +34,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>160</x>
-     <y>0</y>
-     <width>111</width>
+     <x>150</x>
+     <y>10</y>
+     <width>131</width>
      <height>31</height>
     </rect>
    </property>
@@ -54,7 +54,7 @@
     <rect>
      <x>40</x>
      <y>40</y>
-     <width>181</width>
+     <width>201</width>
      <height>31</height>
     </rect>
    </property>
@@ -70,7 +70,7 @@
   <widget class="QLabel" name="cabin_label">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>280</x>
      <y>50</y>
      <width>91</width>
      <height>21</height>
@@ -88,9 +88,9 @@
   <widget class="QLabel" name="cabin_type_label">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>380</x>
      <y>50</y>
-     <width>71</width>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
@@ -108,7 +108,7 @@
     <rect>
      <x>30</x>
      <y>80</y>
-     <width>191</width>
+     <width>221</width>
      <height>31</height>
     </rect>
    </property>
@@ -526,7 +526,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   <widget class="QPushButton" name="yes_pushButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>100</x>
      <y>460</y>
      <width>100</width>
      <height>40</height>
@@ -928,7 +928,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   <widget class="QLabel" name="pay_label">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>380</x>
      <y>150</y>
      <width>121</width>
      <height>31</height>
@@ -946,7 +946,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   <widget class="QPushButton" name="no_pushButton">
    <property name="geometry">
     <rect>
-     <x>260</x>
+     <x>270</x>
      <y>460</y>
      <width>100</width>
      <height>40</height>
@@ -1758,9 +1758,9 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
   <widget class="QLineEdit" name="tel_num_lineEdit">
    <property name="geometry">
     <rect>
-     <x>160</x>
+     <x>210</x>
      <y>380</y>
-     <width>191</width>
+     <width>201</width>
      <height>31</height>
     </rect>
    </property>
@@ -2162,7 +2162,7 @@ background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #778899,stop:1 
     <rect>
      <x>20</x>
      <y>140</y>
-     <width>311</width>
+     <width>351</width>
      <height>171</height>
     </rect>
    </property>
