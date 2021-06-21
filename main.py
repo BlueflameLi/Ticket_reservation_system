@@ -1516,7 +1516,11 @@ class Order_detail(QDialog, Ui_Order_detail):
             "select * from [Order_Detail] WHERE [Order_id] = '{0}'".format(Order_id))
         rows = cursor.fetchall()
 
-        self.text1.setText(rows[0].Order_status)       
+        self.text1.setText(rows[0].Order_status)
+        if self.text1.text() == '未支付    ':
+            self.pay_pushButton.show()
+        else:
+            self.pay_pushButton.hide()
         self.money.setText(str(rows[0].Order_pay) + '元')
         self.flightID.setText(rows[0].航班号)
         self.starttime.setText(
