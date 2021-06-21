@@ -1516,7 +1516,7 @@ class Order_detail(QDialog, Ui_Order_detail):
             "select * from [Order_Detail] WHERE [Order_id] = '{0}'".format(Order_id))
         rows = cursor.fetchall()
 
-        self.text1.setText(rows[0].Order_status)
+        self.text1.setText(rows[0].Order_status)       
         self.money.setText(str(rows[0].Order_pay) + '元')
         self.flightID.setText(rows[0].航班号)
         self.starttime.setText(
@@ -1565,7 +1565,26 @@ class Order_detail(QDialog, Ui_Order_detail):
         self.passenger_tablewidget.horizontalHeader().setSectionResizeMode(2,
                                                                            QHeaderView.ResizeToContents)
 
+        self.pay_pushButton.clicked.connect(self.pay_pushButton_clicked)
+        self.delete_pushButton.clicked.connect(self.delete_pushButton_clicked)
 
+    def pay_pushButton_clicked(self):
+        reply = QMessageBox.question(
+            self, "提示", "是否支付成功", QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            cursor.execute(
+                "update [Order] set [Order_status]='已出票' where [Order_id] = '{0}' ".format(self.orderID.text()))
+            cursor.commit()
+            self.text1.setText('已出票')
+            self.pay_pushButton.hide()
+    def delete_pushButton_clicked(self):
+        reply = QMessageBox.question(
+            self, "提示", "是否确认", QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            cursor.execute(
+                "update [Order] set [Order_status]='已退票' where [Order_id] = '{0}' ".format(self.orderID.text()))
+            cursor.commit()
+            self.text1.setText('已退票')
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
